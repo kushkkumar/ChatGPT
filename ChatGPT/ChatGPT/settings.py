@@ -32,7 +32,7 @@ OPENAI_API_KEY = env('OPENAI_API_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kushkkumar.pythonanywhere.com']
+ALLOWED_HOSTS = ['kushkkumar.pythonanywhere.com','localhost']
 
 
 # Application definition
