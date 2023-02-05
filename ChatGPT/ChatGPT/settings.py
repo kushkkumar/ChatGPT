@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
 ]
 
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = ""
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
