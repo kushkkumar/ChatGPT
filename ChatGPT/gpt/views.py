@@ -2,10 +2,11 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import openai
+from django.conf import settings
 
 class TextGenerationAPIView(APIView):
     def post(self, request):
-        openai.api_key = "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"
+        openai.api_key = settings.OPENAI_API_KEY
         prompt = request.POST.get("prompt", "")
         completions = openai.Completion.create(
             engine="text-davinci-002",
@@ -57,31 +58,3 @@ class GenerationEngineListAPIView(APIView):
             }
         ]
         return Response(engines)
-
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-# import openai
-
-# class AllGenerationEngineAPI(APIView):
-#     def post(self, request):
-#         # Extract the request data
-#         engine = request.data.get('engine')
-#         prompt = request.data.get('prompt')
-#         max_tokens = request.data.get('max_tokens', 2000)
-#         stop = request.data.get('stop', None)
-
-#         # Validate the request data
-#         if engine is None or prompt is None:
-#             return Response({'error': 'Engine and prompt are required fields'}, status=status.HTTP_400_BAD_REQUEST)
-
-#         # Use the OpenAI API to generate text
-#         completions = openai.Completion.create(
-#             engine=engine,
-#             prompt=prompt,
-#             max_tokens=max_tokens,
-#             stop=stop,
-#             n=1,
-#             temperature=0.5,
-#         )
-#         message = completions.choices[0].text
-#         return Response({'text': message})
